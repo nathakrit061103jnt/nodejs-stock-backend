@@ -52,13 +52,14 @@ exports.findAll = (req, res) => {
 
 // Find a single Todo with an id
 exports.findOne = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
 
   Todo.findByPk(id)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
+      console.error(err);
       res.status(500).send({
         message: "Error retrieving Todo with id=" + id,
       });
@@ -67,7 +68,7 @@ exports.findOne = (req, res) => {
 
 // Update a Todo by the id in the request
 exports.update = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
 
   Todo.update(req.body, {
     where: { td_id: id },
@@ -92,7 +93,7 @@ exports.update = (req, res) => {
 
 // Delete a Todo with the specified id in the request
 exports.delete = (req, res) => {
-  const id = req.params.id;
+  const { id } = req.params;
 
   Todo.destroy({
     where: { td_id: id },
