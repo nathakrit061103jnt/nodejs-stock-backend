@@ -12,11 +12,14 @@ exports.create = (req, res) => {
     return;
   }
 
-  const { td_title } = req.body;
+  const td_published = req.body.td_published ? req.body.td_published : false;
+  const { td_title, td_description } = req.body;
 
   // Create a Todo
   const todo = {
     td_title,
+    td_description,
+    td_published,
   };
 
   // Save Todo in the database
@@ -97,6 +100,7 @@ exports.delete = (req, res) => {
 
   Todo.destroy({
     where: { td_id: id },
+    force: true,
   })
     .then((num) => {
       if (num == 1) {

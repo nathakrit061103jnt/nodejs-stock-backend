@@ -16,6 +16,9 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: true,
     },
+    td_published: {
+      type: Sequelize.BOOLEAN,
+    },
     createdAt: {
       type: Sequelize.DATE,
     },
