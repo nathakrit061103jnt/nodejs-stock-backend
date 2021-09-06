@@ -10,6 +10,11 @@ module.exports = (sequelize, Sequelize) => {
     td_title: {
       type: Sequelize.STRING(100),
       unique: true,
+      allowNull: false,
+    },
+    td_description: {
+      type: Sequelize.STRING,
+      allowNull: true,
     },
     createdAt: {
       type: Sequelize.DATE,
