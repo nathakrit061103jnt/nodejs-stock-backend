@@ -42,7 +42,10 @@ exports.findAll = (req, res) => {
     ? { td_title: { [Op.like]: `%${td_title}%` } }
     : null;
 
-  Todo.findAll({ where: condition })
+  Todo.findAll({
+    where: condition,
+    order: [["td_id", "ASC"]],
+  })
     .then((data) => {
       res.send(data);
     })
